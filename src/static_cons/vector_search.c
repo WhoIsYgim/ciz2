@@ -39,6 +39,7 @@ Vector* min_norm_dif (FILE* input, Vector* to_compare) {
     free(cur);
     return result_vec;
 }
+
 Vector* min_diff_search (const char* input_filename, const char* output_filename) {
 
     FILE* in_file = fopen(input_filename, "r");

@@ -15,7 +15,7 @@ float vec_norm (Vector* vec_to_count){
 
 void scan_vec (FILE* input, Vector* res) {
     if (!input) {
-        printf("Input file open error paral!\n");
+        printf("Input file open error!\n");
         return;
     }
 

@@ -6,7 +6,7 @@ int main () {
     time_t begin, end;
 
     begin = time(NULL);
-    a = min_diff_search("text.txt", "output.txt");
+    a = min_diff_search("in_file.txt", "out.txt");
 
     if(!a) {
         printf("Search operation error!\n");
