@@ -7,10 +7,13 @@ int main () {
 
     begin = time(NULL);
     a = min_diff_search("text.txt", "output.txt");
+
     if(!a) {
-        printf("err");
+        printf("Search operation error!\n");
     }
+
     end = time(NULL);
-    printf("%f",  difftime(end, begin));
+    printf("%f\n",  difftime(end, begin));
+
     free(a);
 }

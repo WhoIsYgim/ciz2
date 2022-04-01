@@ -35,9 +35,12 @@ Vector* min_norm_dif (FILE* input, Vector* to_compare) {
     return result_vec;
 }
 Vector* min_diff_search (const char* input_filename, const char* output_filename) {
-    printf("hello from paral");
 
     FILE* in_file = fopen(input_filename, "r");
+    if(!in_file) {
+        printf("Input file open error paral!\n");
+        return NULL;
+    }
     char* filename_buffer_str = malloc(sizeof (char)*MAX_FILENAME_LEN);
 
     fscanf(in_file, "%s", filename_buffer_str);
@@ -80,6 +83,8 @@ Vector* min_diff_search (const char* input_filename, const char* output_filename
 
     Vector* cur_min_dif_vec = min_norm_dif(cur_proc_file, to_compare);
 
+    fclose(cur_proc_file);
+
     replace_cur_vec(&shared_vecs[proc_count-1],cur_min_dif_vec);
 
 
@@ -96,6 +101,7 @@ Vector* min_diff_search (const char* input_filename, const char* output_filename
     }
 
     Vector* result = malloc(sizeof (Vector));
+
     replace_cur_vec(result, &shared_vecs[0]);
     float min_diff = fabsf(vec_norm(to_compare) - vec_norm(&shared_vecs[0]));
 
@@ -105,10 +111,14 @@ Vector* min_diff_search (const char* input_filename, const char* output_filename
             replace_cur_vec(result, &shared_vecs[i]);
         }
     }
+
+    free(to_compare);
+    munmap(shared_vecs, )
     FILE* out_file = fopen(output_filename, "w");
     for (int i = 0; i < VEC_SIZE; ++i) {
         fprintf(out_file, "%f ", result->values[i]);
     }
+
     fclose(in_file);
     fclose(out_file);
     return result;

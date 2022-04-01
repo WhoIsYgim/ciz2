@@ -10,9 +10,20 @@ Vector* min_norm_dif (FILE* input, Vector* to_compare) {
 
     Vector* cur = malloc(sizeof (Vector));
 
+    if(!cur) {
+        printf("Memory allocation error\n");
+        return NULL;
+    }
+
     scan_vec(input, cur);
 
     Vector* result_vec = malloc(sizeof (Vector));
+
+    if(!result_vec) {
+        printf("Memory allocation error\n");
+        return NULL;
+    }
+
     float min_diff = fabsf(vec_norm(to_compare) - vec_norm(cur));
 
     replace_cur_vec(result_vec, cur);
@@ -32,7 +43,7 @@ Vector* min_diff_search (const char* input_filename, const char* output_filename
 
     FILE* in_file = fopen(input_filename, "r");
     if (!in_file) {
-        printf("file open error");
+        printf("file open error\n");
         return NULL;
     }
     Vector* to_compare = malloc(sizeof (Vector));
@@ -44,9 +55,13 @@ Vector* min_diff_search (const char* input_filename, const char* output_filename
     for (int i = 0; i < VEC_SIZE; ++i) {
         fprintf(out_file, "%f ", result->values[i]);
     }
+
     free(to_compare);
+
+
     fclose(in_file);
     fclose(out_file);
+
     return result;
 }
 
