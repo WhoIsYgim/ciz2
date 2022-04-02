@@ -113,7 +113,9 @@ Vector* min_diff_search (const char* input_filename, const char* output_filename
     }
 
     free(to_compare);
+
     munmap(shared_vecs, sizeof(Vector)*FILES_NUM);
+
     FILE* out_file = fopen(output_filename, "w");
     for (int i = 0; i < VEC_SIZE; ++i) {
         fprintf(out_file, "%f ", result->values[i]);

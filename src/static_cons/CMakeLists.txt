@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.16.3)
 
-project(vector_search C)
+project(vector_search C )
 
 set(VEC_PROC_DIR "vec_processing")
 
