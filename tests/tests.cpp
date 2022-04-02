@@ -29,7 +29,7 @@ TEST(SCAN_VEC, TEST_SCAN_VEC) {
     }
     Vector* test_vec =(Vector*)malloc(sizeof (Vector));
 
-    FILE* input_file = fopen("test_vector.txt","r");
+    FILE* input_file = fopen("./tests/input/test_vector.txt","r");
 
     scan_vec(input_file, test_vec);
     bool result = true;
