@@ -3,6 +3,8 @@ cmake_minimum_required(VERSION 3.16.3)
 project(ciz2 C CXX)
 set(CMAKE_C_STANDARD 99)
 
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fprofile-arcs -ftest-coverage ")
+set(CMAKE_C_FLAGS "--coverage")
 
 set(SOURCE_FILES "main.c")
 add_executable(${PROJECT_NAME} ${SOURCE_FILES})
