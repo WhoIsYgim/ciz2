@@ -41,8 +41,8 @@ jobs:
       - name: install gtest
         run: sudo apt install libgtest-dev lcov
 
-      - name: build
-        run:  mkdir build\ && cmake -B build -Dcons=true -Dparal=false && cd build\ && make && ./tests/tests
+      - name: test
+        run:  mkdir build && cmake -B build -Dcons=true -Dparal=false && cd build && make && ./tests/tests
 
       - name: get-stats
         run: lcov -t "tests" -o coverage.info -c -d .
@@ -59,7 +59,7 @@ jobs:
       - name: install gtest
         run: sudo apt install libgtest-dev lcov
 
-      - name: build
+      - name: test
         run: mkdir build && cmake -B build -Dcons=false -Dparal=true && cd build && make && ./tests/tests
 
       - name: get-stats
